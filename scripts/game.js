@@ -42,39 +42,15 @@ function playRound() {
   let playerSelection = getUserChoice();
   let computerSelection = computerPlay();
 
-  if (playerSelection == "rock" && computerSelection == "Paper") {
-    console.log("You chose Rock. The computer chose Paper.")
-    console.log("You lose! Paper beats Rock.");
-    playerWin = false;
-    return playerWin;
-  }
-  else if (playerSelection == "rock" && computerSelection == "Scissors") {
-    console.log("You chose Rock. The computer chose Scissors.")
-    console.log("You win! Rock beats Scissors.");
+  if (playerSelection == "rock" && computerSelection == "Scissors" || playerSelection == "paper" && computerSelection == "Rock" || playerSelection == "scissors" && computerSelection == "Paper" ) {
+    console.log("You chose " + capitalise(playerSelection) + ". The computer chose " + computerSelection + ".");
+    console.log("You win! " + capitalise(playerSelection) + " beats " + computerSelection + ".");
     playerWin = true;
     return playerWin;
   }
-  else if (playerSelection == "paper" && computerSelection == "Rock") {
-    console.log("You chose Paper. The computer chose Rock.")
-    console.log("You win! Paper beats Rock.");
-    playerWin = true;
-    return playerWin;
-  }
-  else if (playerSelection == "paper" && computerSelection == "Scissors") {
-    console.log("You chose Paper. The computer chose Scissors.")
-    console.log("You lose! Scissors beats Paper.");
-    playerWin = false;
-    return playerWin;
-  }
-  else if (playerSelection == "scissors" && computerSelection == "Paper") {
-    console.log("You chose Scissors. The computer chose Paper.")
-    console.log("You win! Scissors beats Paper.");
-    playerWin = true;
-    return playerWin;
-  }
-  else if (playerSelection == "scissors" && computerSelection == "Rock") {
-    console.log("You chose Scissors. The computer chose Rock.")
-    console.log("You lose! Rock beats Scissors.");
+  else if (playerSelection == "rock" && computerSelection == "Paper" || playerSelection == "paper" && computerSelection == "Scissors" || playerSelection == "scissors" && computerSelection == "Rock") {
+    console.log("You chose " + capitalise(playerSelection) + ". The computer chose " + computerSelection + ".");
+    console.log("You lose! " + computerSelection + " beats " + capitalise(playerSelection) + ".");
     playerWin = false;
     return playerWin;
   }
