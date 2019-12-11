@@ -56,10 +56,10 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-/*function game() {
+function game() {
   let playerChoice = getUserChoice();
   let computerChoice = computerPlay();
   let outcome = playRound (playerChoice, computerChoice);
 
   return outcome;
-}*/
+}
