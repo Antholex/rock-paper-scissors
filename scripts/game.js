@@ -32,6 +32,11 @@ function getUserChoice() {
   }
 }
 
+function capitalise(userChoice) {
+  let capitalisedString = userChoice.substr(0,1).toUpperCase() + userChoice.substr(1);
+  return capitalisedString;
+}
+
 function playRound() {
   let playerWin;
   let playerSelection = getUserChoice();
@@ -74,7 +79,7 @@ function playRound() {
     return playerWin;
   }
   else {
-    console.log("You chose " + playerSelection.substr(0,1).toUpperCase() + playerSelection.substr(1) + ". The computer chose " + computerSelection + ".");
+    console.log("You chose " + capitalise(playerSelection) + ". The computer chose " + computerSelection + ".");
     console.log("It's a draw!");
     playerWin = undefined;
     return playerWin;
