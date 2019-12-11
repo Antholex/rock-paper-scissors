@@ -18,22 +18,23 @@ function getUserChoice() {
 
   if (userChoice == "" || userChoice == null) {
     alert("Please enter a valid choice");
-    getUserChoice();
+    return getUserChoice();
   }
   else {
-    userChoice = userChoice.toLowerCase();
-    if (userChoice == "rock" || userChoice == "paper" || userChoice == "scissors") {
+    userChoice = capitalise(userChoice);
+    if (userChoice == "Rock" || userChoice == "Paper" || userChoice == "Scissors") {
       return userChoice;
     }
     else {
       alert("Please enter a valid choice");
-      getUserChoice();
+      return getUserChoice();
     }
   }
 }
 
 function capitalise(userChoice) {
-  let capitalisedString = userChoice.substr(0,1).toUpperCase() + userChoice.substr(1);
+  let allLowerCase = userChoice.toLowerCase();
+  let capitalisedString = allLowerCase.substr(0,1).toUpperCase() + allLowerCase.substr(1);
   return capitalisedString;
 }
 
@@ -42,20 +43,20 @@ function playRound() {
   let playerSelection = getUserChoice();
   let computerSelection = computerPlay();
 
-  if (playerSelection == "rock" && computerSelection == "Scissors" || playerSelection == "paper" && computerSelection == "Rock" || playerSelection == "scissors" && computerSelection == "Paper" ) {
-    console.log("You chose " + capitalise(playerSelection) + ". The computer chose " + computerSelection + ".");
-    console.log("You win! " + capitalise(playerSelection) + " beats " + computerSelection + ".");
+  if (playerSelection == "Rock" && computerSelection == "Scissors" || playerSelection == "Paper" && computerSelection == "Rock" || playerSelection == "Scissors" && computerSelection == "Paper" ) {
+    console.log("You chose " + playerSelection + ". The computer chose " + computerSelection + ".");
+    console.log("You win! " + playerSelection + " beats " + computerSelection + ".");
     playerWin = true;
     return playerWin;
   }
-  else if (playerSelection == "rock" && computerSelection == "Paper" || playerSelection == "paper" && computerSelection == "Scissors" || playerSelection == "scissors" && computerSelection == "Rock") {
-    console.log("You chose " + capitalise(playerSelection) + ". The computer chose " + computerSelection + ".");
-    console.log("You lose! " + computerSelection + " beats " + capitalise(playerSelection) + ".");
+  else if (playerSelection == "Rock" && computerSelection == "Paper" || playerSelection == "Paper" && computerSelection == "Scissors" || playerSelection == "Scissors" && computerSelection == "Rock") {
+    console.log("You chose " + playerSelection + ". The computer chose " + computerSelection + ".");
+    console.log("You lose! " + computerSelection + " beats " + playerSelection + ".");
     playerWin = false;
     return playerWin;
   }
   else {
-    console.log("You chose " + capitalise(playerSelection) + ". The computer chose " + computerSelection + ".");
+    console.log("You chose " + playerSelection + ". The computer chose " + computerSelection + ".");
     console.log("It's a draw!");
     playerWin = undefined;
     return playerWin;
