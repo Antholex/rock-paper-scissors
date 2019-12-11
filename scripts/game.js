@@ -34,32 +34,51 @@ function getUserChoice() {
 
 function playRound(playerSelection, computerSelection) {
   if (playerSelection == "rock" && computerSelection == "Paper") {
-    return "You lose! Paper beats Rock.";
+    console.log("You chose Rock. The computer chose Paper.")
+    console.log("You lose! Paper beats Rock.");
   }
   else if (playerSelection == "rock" && computerSelection == "Scissors") {
-    return "You win! Rock beats Scissors.";
+    console.log("You chose Rock. The computer chose Scissors.")
+    console.log("You win! Rock beats Scissors.");
   }
   else if (playerSelection == "paper" && computerSelection == "Rock") {
-    return "You win! Paper beats Rock.";
+    console.log("You chose Paper. The computer chose Rock.")
+    console.log("You win! Paper beats Rock.");
   }
   else if (playerSelection == "paper" && computerSelection == "Scissors") {
-    return "You lose! Scissors beats Paper.";
+    console.log("You chose Paper. The computer chose Scissors.")
+    console.log("You lose! Scissors beats Paper.");
   }
   else if (playerSelection == "scissors" && computerSelection == "Paper") {
-    return "You win! Scissors beats Paper.";
+    console.log("You chose Scissors. The computer chose Paper.")
+    console.log("You win! Scissors beats Paper.");
   }
   else if (playerSelection == "scissors" && computerSelection == "Rock") {
-    return "You lose! Rock beats Scissors.";
+    console.log("You chose Scissors. The computer chose Rock.")
+    console.log("You lose! Rock beats Scissors.");
   }
   else {
-    return "It's a draw!";
+    console.log("You chose " + playerSelection.substr(0,1).toUpperCase() + playerSelection.substr(1) + ". The computer chose " + computerSelection + ".");
+    console.log("It's a draw!");
   }
 }
 
 function game() {
-  let playerChoice = getUserChoice();
-  let computerChoice = computerPlay();
-  let outcome = playRound (playerChoice, computerChoice);
+  let playerWins = 0;
+  let computerWins = 0;
 
-  return outcome;
+  for (let i = 0; i < 5; i++) {
+    if (i < 4) {
+      let playerChoice = getUserChoice();
+      let computerChoice = computerPlay();
+      playRound(playerChoice, computerChoice);
+      alert("Play next round");
+    }
+    else {
+      let playerChoice = getUserChoice();
+      let computerChoice = computerPlay();
+      playRound(playerChoice, computerChoice);
+      alert("Finish game");
+    }
+  }
 }
