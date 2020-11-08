@@ -44,19 +44,19 @@ function playRound() {
   let computerSelection = computerPlay();
 
   if (playerSelection == "Rock" && computerSelection == "Scissors" || playerSelection == "Paper" && computerSelection == "Rock" || playerSelection == "Scissors" && computerSelection == "Paper" ) {
-    console.log("You chose " + playerSelection + ". The computer chose " + computerSelection + ".");
-    console.log("You win! " + playerSelection + " beats " + computerSelection + ".");
+    console.log(`You chose ${playerSelection}. The computer chose ${computerSelection}.`);
+    console.log(`You win! ${playerSelection} beats ${computerSelection}.`);
     playerWin = true;
     return playerWin;
   }
   else if (playerSelection == "Rock" && computerSelection == "Paper" || playerSelection == "Paper" && computerSelection == "Scissors" || playerSelection == "Scissors" && computerSelection == "Rock") {
-    console.log("You chose " + playerSelection + ". The computer chose " + computerSelection + ".");
-    console.log("You lose! " + computerSelection + " beats " + playerSelection + ".");
+    console.log(`You chose ${playerSelection}. The computer chose ${computerSelection}.`);
+    console.log(`You lose! ${computerSelection} beats ${playerSelection}.`);
     playerWin = false;
     return playerWin;
   }
   else {
-    console.log("You chose " + playerSelection + ". The computer chose " + computerSelection + ".");
+    console.log(`You chose ${playerSelection}. The computer chose ${computerSelection}`);
     console.log("It's a draw!");
     playerWin = undefined;
     return playerWin;
