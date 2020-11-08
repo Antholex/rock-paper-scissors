@@ -13,34 +13,14 @@ function computerPlay() {
   }
 }
 
-function getUserChoice() {
-  let userChoice = prompt("Please choose Rock, Paper, or Scissors", "");
-
-  if (userChoice == "" || userChoice == null) {
-    alert("Please enter a valid choice");
-    return getUserChoice();
-  }
-  else {
-    userChoice = capitalise(userChoice);
-    if (userChoice == "Rock" || userChoice == "Paper" || userChoice == "Scissors") {
-      return userChoice;
-    }
-    else {
-      alert("Please enter a valid choice");
-      return getUserChoice();
-    }
-  }
-}
-
 function capitalise(userChoice) {
-  let allLowerCase = userChoice.toLowerCase();
-  let capitalisedString = allLowerCase.substr(0,1).toUpperCase() + allLowerCase.substr(1);
+  let capitalisedString = userChoice.substr(0,1).toUpperCase() + userChoice.substr(1);
   return capitalisedString;
 }
 
-function playRound() {
+function playRound(event) {
   let playerWin;
-  let playerSelection = getUserChoice();
+  let playerSelection = capitalise(event.target.value);
   let computerSelection = computerPlay();
 
   if (playerSelection == "Rock" && computerSelection == "Scissors" || playerSelection == "Paper" && computerSelection == "Rock" || playerSelection == "Scissors" && computerSelection == "Paper" ) {
@@ -56,7 +36,7 @@ function playRound() {
     return playerWin;
   }
   else {
-    console.log(`You chose ${playerSelection}. The computer chose ${computerSelection}`);
+    console.log(`You chose ${playerSelection}. The computer chose ${computerSelection}.`);
     console.log("It's a draw!");
     playerWin = undefined;
     return playerWin;
@@ -79,28 +59,7 @@ function game() {
   let playerWins = 0;
   let computerWins = 0;
 
-  for (let i = 0; i < 5; i++) {
-    if (i < 4) {
-      let winner = playRound();
-      if (winner == true) {
-        ++playerWins;
-      }
-      else if (winner == false) {
-        ++computerWins;
-      }
-      alert("Play next round");
-    }
-    else {
-      let winner = playRound();
+  const btns = document.querySelectorAll("button");
 
-      if (winner == true) {
-        ++playerWins;
-      }
-      else if (winner == false) {
-        ++computerWins;
-      }
-      alert("Finish game");
-    }
-  }
-  result(playerWins, computerWins);
+  btns.forEach(button => button.addEventListener("click", playRound));
 }
