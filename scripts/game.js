@@ -63,6 +63,20 @@ function game() {
   let computerWins = 0;
 
   const btns = document.querySelectorAll("button");
+  const playerScore = document.querySelector(".player-score");
+  const computerScore = document.querySelector(".computer-score");
 
-  btns.forEach(button => button.addEventListener("click", playRound));
+  btns.forEach(button => button.addEventListener("click", function(event) {
+    let result = playRound(event);
+
+    if (result == true) {
+      playerWins++;
+      playerScore.textContent = `Your score: ${playerWins}`;
+    }
+    else if (result == false) {
+      computerWins++;
+      computerScore.textContent = `Computer's score: ${computerWins}`;
+    }
+
+  }));
 }
