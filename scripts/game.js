@@ -58,25 +58,65 @@ function result(playerScore, computerScore) {
   }
 }
 
+// function updatePlayerScore(result, currentScore) {
+//   const playerScore = document.querySelector(".player-score");
+//   if (result == true) {
+//     currentScore++
+//     playerScore.textContent = `Your score: ${currentScore}`;
+//     return currentScore;
+//   }
+//   else {
+//     return currentScore;
+//   }
+// }
+
+// function updateComputerScore(result, currentScore) {
+//   const computerScore = document.querySelector(".computer-score");
+//   if (result == false) {
+//     currentScore++
+//     computerScore.textContent = `Computer's score: ${currentScore}`;
+//     return currentScore;
+//   }
+//   else {
+//     return currentScore;
+//   }
+// }
+
+
 function game() {
-  let playerWins = 0;
-  let computerWins = 0;
 
   const btns = document.querySelectorAll("button");
-  const playerScore = document.querySelector(".player-score");
-  const computerScore = document.querySelector(".computer-score");
+  const playerScoreDisplay = document.querySelector(".player-score");
+  const computerScoreDisplay = document.querySelector(".computer-score");
 
-  btns.forEach(button => button.addEventListener("click", function(event) {
+  // function counter() {
+  //   let count = 0;
+
+  //   return () => {
+  //     count++;
+  //     return count;
+  //   };
+  // }
+
+  // let playerScore = counter();
+  // let computerScore = counter();
+
+  let playerScore = 0;
+  let computerScore = 0;
+
+  btns.forEach(button => button.addEventListener("click", (event) => {
     let result = playRound(event);
+    updateScore(result);
+  }));
 
-    if (result == true) {
-      playerWins++;
-      playerScore.textContent = `Your score: ${playerWins}`;
+  function updateScore(result) {
+    if (result == true ) {
+      playerScore++;
+      playerScoreDisplay.textContent = `Your score: ${playerScore}`;
     }
     else if (result == false) {
-      computerWins++;
-      computerScore.textContent = `Computer's score: ${computerWins}`;
+      computerScore++;
+      computerScoreDisplay.textContent = `Computer's score: ${computerScore}`;
     }
-
-  }));
+  }
 }
