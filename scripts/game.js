@@ -2,9 +2,10 @@ function game() {
 
   const btns = document.querySelectorAll("button");
   const choices = document.querySelector(".choices");
-  const result = document.querySelector(".result");
+  const roundResult = document.querySelector(".round-result");
   const playerScoreDisplay = document.querySelector(".player-score");
   const computerScoreDisplay = document.querySelector(".computer-score");
+  const gameResult = document.querySelector(".game-result");
 
   let playerScore = 0;
   let computerScore = 0;
@@ -12,6 +13,7 @@ function game() {
   btns.forEach(button => button.addEventListener("click", (event) => {
     let result = playRound(event);
     updateScore(result);
+    checkScore();
   }));
 
   function playRound(event) {
@@ -21,19 +23,19 @@ function game() {
 
     if (playerSelection == "Rock" && computerSelection == "Scissors" || playerSelection == "Paper" && computerSelection == "Rock" || playerSelection == "Scissors" && computerSelection == "Paper" ) {
       choices.textContent = `You chose ${playerSelection}. The computer chose ${computerSelection}.`;
-      result.textContent = `You win! ${playerSelection} beats ${computerSelection}.`;
+      roundResult.textContent = `You win! ${playerSelection} beats ${computerSelection}.`;
       playerWin = true;
       return playerWin;
     }
     else if (playerSelection == "Rock" && computerSelection == "Paper" || playerSelection == "Paper" && computerSelection == "Scissors" || playerSelection == "Scissors" && computerSelection == "Rock") {
       choices.textContent = `You chose ${playerSelection}. The computer chose ${computerSelection}.`
-      result.textContent = `You lose! ${computerSelection} beats ${playerSelection}.`
+      roundResult.textContent = `You lose! ${computerSelection} beats ${playerSelection}.`
       playerWin = false;
       return playerWin;
     }
     else {
       choices.textContent = `You chose ${playerSelection}. The computer chose ${computerSelection}.`
-      result.textContent = "It's a draw!";
+      roundResult.textContent = "It's a draw!";
       playerWin = undefined;
       return playerWin;
     }
@@ -69,15 +71,28 @@ function game() {
       computerScoreDisplay.textContent = `Computer's score: ${computerScore}`;
     }
   }
+
+  function checkScore() {
+    if (playerScore == 5) {
+      choices.textContent = "";
+      roundResult.textContent = "";
+      gameResult.textContent = "Congratulations! You won the game!";
+    }
+    else if (computerScore == 5) {
+      choices.textContent = "";
+      roundResult.textContent = "";
+      gameResult.textContent = "Commiserations! You lost the game!";
+    }
+    else return;
+  }
 }
-// function result(playerScore, computerScore) {
-//   if (playerScore > computerScore) {
-//     console.log("Congratulations! You won the game!");
+
+//   function reset() {
+//     choices.textContent = "";
+//     roundResult.textContent = "";
+//     playerScoreDisplay.textContent = "Your score: 0";
+//     computerScoreDisplay.textContent = "Computer's score: 0";
+//     playerScore = 0;
+//     computerScore = 0;
 //   }
-//   else if (computerScore > playerScore) {
-//     console.log("Commiserations! You lost the game!");
-//   }
-//   else {
-//     console.log("You neither won or lost; the game is a draw!");
-//   }
-// }
+//
