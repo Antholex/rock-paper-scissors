@@ -3,14 +3,17 @@ function game() {
   const playerChoice = document.querySelectorAll(".player-choice");
   const choices = document.querySelector(".choices");
   const roundResult = document.querySelector(".round-result");
-  const playerScoreDisplay = document.querySelector(".player-score");
-  const computerScoreDisplay = document.querySelector(".computer-score");
+  const playerScoreDisplay = document.querySelector(".current-player-score");
+  const computerScoreDisplay = document.querySelector(".current-computer-score");
   const gameResult = document.querySelector(".game-result");
   const nextRound = document.querySelector(".next-round");
   const newGame = document.querySelector(".new-game");
 
   let playerScore = 0;
   let computerScore = 0;
+
+  playerScoreDisplay.textContent = `${playerScore}`;
+  computerScoreDisplay.textContent = `${computerScore}`;
 
   playerChoice.forEach(button => button.addEventListener("click", (event) => {
     let result = playRound(event);
@@ -75,11 +78,11 @@ function game() {
   function updateScore(result) {
     if (result == true ) {
       playerScore++;
-      playerScoreDisplay.textContent = `Your score: ${playerScore}`;
+      playerScoreDisplay.textContent = `${playerScore}`;
     }
     else if (result == false) {
       computerScore++;
-      computerScoreDisplay.textContent = `Computer's score: ${computerScore}`;
+      computerScoreDisplay.textContent = `${computerScore}`;
     }
   }
 
@@ -112,15 +115,15 @@ function game() {
   }
 
   function resetGame() {
+    playerScore = 0;
+    computerScore = 0;
     gameResult.textContent = "";
     choices.textContent = "";
     roundResult.textContent = "";
-    playerScoreDisplay.textContent = "Your score: 0";
-    computerScoreDisplay.textContent = "Computer's score: 0";
+    playerScoreDisplay.textContent = `${playerScore}`;
+    computerScoreDisplay.textContent = `${computerScore}`;
     playerChoice.forEach(button => button.classList.remove("hidden"));
     nextRound.classList.add("hidden");
-    playerScore = 0;
-    computerScore = 0;
   }
 
 }
