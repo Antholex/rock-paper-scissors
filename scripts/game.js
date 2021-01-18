@@ -6,14 +6,22 @@ function game() {
   const playerScoreDisplay = document.querySelector(".current-player-score");
   const computerScoreDisplay = document.querySelector(".current-computer-score");
   const gameResult = document.querySelector(".game-result");
+  const startGame = document.querySelector(".start-game");
   const nextRound = document.querySelector(".next-round");
   const newGame = document.querySelector(".new-game");
+  const choicesText = document.querySelector(".choices-text");
+  const newGameText = document.querySelector(".new-game-text");
+  const nextRoundText = document.querySelector(".next-round-text");
 
   let playerScore = 0;
   let computerScore = 0;
 
   playerScoreDisplay.textContent = `${playerScore}`;
   computerScoreDisplay.textContent = `${computerScore}`;
+
+  startGame.addEventListener("click", () => {
+    beginGame();
+  } )
 
   playerChoice.forEach(button => button.addEventListener("click", (event) => {
     let result = playRound(event);
@@ -29,6 +37,14 @@ function game() {
   newGame.addEventListener("click", () => {
     resetGame();
   });
+
+  function beginGame() {
+    startGame.classList.toggle("hidden");
+    playerChoice.forEach(button => button.classList.toggle("hidden"));
+    newGame.classList.toggle("hidden");
+    newGameText.classList.toggle("hidden");
+    choicesText.classList.toggle("hidden");
+  }
 
   function playRound(event) {
     let playerWin;
@@ -90,10 +106,12 @@ function game() {
     if (playerScore == 5) {
       gameResult.textContent = "Congratulations! You won the game!";
       nextRound.classList.toggle("hidden");
+      nextRoundText.classList.toggle("hidden");
     }
     else if (computerScore == 5) {
       gameResult.textContent = "Commiserations! You lost the game!";
       nextRound.classList.toggle("hidden");
+      nextRoundText.classList.toggle("hidden");
     }
     else return;
   }
@@ -101,11 +119,15 @@ function game() {
   function hidePlayerChoice() {
     playerChoice.forEach(button => button.classList.toggle("hidden"));
     nextRound.classList.toggle("hidden");
+    choicesText.classList.toggle("hidden");
+    nextRoundText.classList.toggle("hidden");
   }
 
   function playNextRound() {
     playerChoice.forEach(button => button.classList.toggle("hidden"));
     nextRound.classList.toggle("hidden");
+    choicesText.classList.toggle("hidden");
+    nextRoundText.classList.toggle("hidden");
     choices.textContent = "";
     roundResult.textContent = "";
   }
@@ -120,6 +142,8 @@ function game() {
     computerScoreDisplay.textContent = `${computerScore}`;
     playerChoice.forEach(button => button.classList.remove("hidden"));
     nextRound.classList.add("hidden");
+    nextRoundText.classList.add("hidden");
+    choicesText.classList.remove("hidden");
   }
 
 }

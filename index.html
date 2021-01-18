@@ -9,6 +9,9 @@
   <script src="scripts/game.js"></script>
 </head>
 <body>
+  <h1>
+    Rock Paper Scissors
+  </h1>
   <div class="results-area">
     <p class="choices"></p>
     <p class="round-result"></p>
@@ -17,11 +20,17 @@
     <p class="computer-score">Computer's score: <span class="current-computer-score"></span></p>
   </div>
   <div class="game-controls">
-    <button type="button" value="rock" class="player-choice">Rock</button>
-    <button type="button" value="paper" class="player-choice">Paper</button>
-    <button type="button" value="scissors" class="player-choice">Scissors</button>
+    <p class="hidden choices-text">Make your choice:</p>
+    <p class="hidden next-round-text">Play the next round:</p>
+    <button type="button" value="start-game" class="start-game">Start Game</button>
+    <button type="button" value="rock" class="hidden player-choice">Rock</button>
+    <button type="button" value="paper" class="hidden player-choice">Paper</button>
+    <button type="button" value="scissors" class="hidden player-choice">Scissors</button>
     <button type="button" value="next-round" class="hidden next-round">Next Round</button>
-    <button type="button" value="new-game" class="new-game">New Game</button>
+  </div>
+  <div>
+    <p class="hidden new-game-text">Want to start again?</p>
+    <button type="button" value="new-game" class="hidden new-game">New Game</button>
   </div>
   <script>
     game();
