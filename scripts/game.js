@@ -88,14 +88,10 @@ function game() {
 
   function checkScore() {
     if (playerScore == 5) {
-      choices.textContent = "";
-      roundResult.textContent = "";
       gameResult.textContent = "Congratulations! You won the game!";
       nextRound.classList.toggle("hidden");
     }
     else if (computerScore == 5) {
-      choices.textContent = "";
-      roundResult.textContent = "";
       gameResult.textContent = "Commiserations! You lost the game!";
       nextRound.classList.toggle("hidden");
     }
